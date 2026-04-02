@@ -1,0 +1,43 @@
+{namespace blog=NITSAN\NsBlog\ViewHelpers}
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="blogwidgets">
+        <aside class="blogwidget">
+            <h3 class="blogwidget__title">
+                <span>RECENT POSTS</span>
+            </h3>
+            <div class="blogwidget__content">
+                <ul class="blogwidgetlist blogwidgetlist--recentposts">
+                    <f:for each="{recentPosts}" as="post">
+                        <li class="blogwidgetlist__item" data-blog-post="{post.uid}">
+                            <blog:link.post class="blogwidgetlist__itemlink" title="{post.title}" post="{post}">
+                                <span class="blogwidgetlist__itemtitle">{post.title}</span>
+                            </blog:link.post>
+                            <span class="blogwidgetlist__itemdate">
+                                <f:format.date format="%B %d, %Y">{post.publishDate}</f:format.date>
+                            </span>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </aside>
+
+        <aside class="blogwidget">
+            <h3 class="blogwidget__title">
+                <span>CATEGORIES</span>
+            </h3>
+            <div class="blogwidget__content">
+                <ul class="blogwidgetlist blogwidgetlist--categories">
+                    <f:for each="{sidebarCategories}" as="category">
+                        <li id="category-{category.uid}" class="blogwidgetlist__item" data-blog-category="{category.uid}">
+                            <blog:link.category class="blogwidgetlist__itemlink" title="{category.title}" category="{category}">
+                                <span class="blogwidgetlist__itemtitle">{category.title}</span>
+                                <span class="blogwidgetlist__itemcount">({category.count})</span>
+                            </blog:link.category>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</f:section>

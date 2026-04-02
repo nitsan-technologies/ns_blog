@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:ns_blog/Resources/Private/Language/locallang_db.xlf" date="2026-04-01T12:00:00Z" product-name="ns_blog">
+        <header/>
+        <body>
+            <trans-unit id="tx_blog_domain_model_author">
+                <source>Blog Author</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.tabs.profile">
+                <source>Profile</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.tabs.contact">
+                <source>Contact</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.tabs.social">
+                <source>Social</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.tabs.details">
+                <source>Details page</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.slug">
+                <source>Slug</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.title">
+                <source>Job title / Role</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.image">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.website">
+                <source>Website</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.email">
+                <source>Email</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.location">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.twitter">
+                <source>Twitter</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.linkedin">
+                <source>LinkedIn</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.xing">
+                <source>XING</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.instagram">
+                <source>Instagram</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.profile">
+                <source>Profile URL</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.bio">
+                <source>Bio</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_author.details_page">
+                <source>Author detail page</source>
+            </trans-unit>
+
+            <trans-unit id="tx_blog_domain_model_tag">
+                <source>Blog Tag</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_tag.tabs.general">
+                <source>General</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_tag.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_tag.slug">
+                <source>Slug</source>
+            </trans-unit>
+            <trans-unit id="tx_blog_domain_model_tag.description">
+                <source>Description</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

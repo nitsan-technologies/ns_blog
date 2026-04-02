@@ -1,0 +1,42 @@
+plugin.tx_nsblog {
+    view {
+        templateRootPaths.10 = EXT:ns_blog/Resources/Private/Templates/
+        templateRootPaths.20 = {$plugin.tx_nsblog.view.templateRootPath}
+        partialRootPaths.10 = EXT:ns_blog/Resources/Private/Partials/
+        partialRootPaths.20 = {$plugin.tx_nsblog.view.partialRootPath}
+        layoutRootPaths.10 = EXT:ns_blog/Resources/Private/Layouts/
+        layoutRootPaths.20 = {$plugin.tx_nsblog.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_nsblog.settings.storagePid}
+    }
+    settings {
+        latestPosts {
+            limit = 3
+        }
+        relatedPosts {
+            limit = 3
+        }
+        loadMore {
+            itemsPerPage = 4
+        }
+        sidebarWidgets {
+            10 = tt_content.nsblog_recentpostswidget.20
+            20 = tt_content.nsblog_categorywidget.20
+        }
+        widgets {
+            recentposts {
+                limit = 5
+            }
+        }
+    }
+}
+
+plugin.tx_nsblog_posts < plugin.tx_nsblog
+plugin.tx_nsblog_latestposts < plugin.tx_nsblog
+plugin.tx_nsblog_category < plugin.tx_nsblog
+plugin.tx_nsblog_authorposts < plugin.tx_nsblog
+plugin.tx_nsblog_sidebar < plugin.tx_nsblog
+plugin.tx_nsblog_relatedposts < plugin.tx_nsblog
+plugin.tx_nsblog_recentpostswidget < plugin.tx_nsblog
+plugin.tx_nsblog_categorywidget < plugin.tx_nsblog

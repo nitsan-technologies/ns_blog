@@ -1,0 +1,21 @@
+<f:layout name="Default"/>
+<f:section name="Content">
+    <f:if condition="{category}">
+        <f:then>
+            <h1 class="page-title">{category.title}</h1>
+            <f:if condition="{category.description}">
+                <p>{category.description}</p>
+            </f:if>
+            <f:render partial="List" arguments="{_all}"/>
+        </f:then>
+        <f:else>
+            <ul class="list-inline">
+                <f:for each="{categories}" as="item">
+                    <li>
+                        <f:link.action action="listPostsByCategory" arguments="{category: item}">{item.title}</f:link.action>
+                    </li>
+                </f:for>
+            </ul>
+        </f:else>
+    </f:if>
+</f:section>

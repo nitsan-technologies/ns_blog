@@ -1,0 +1,21 @@
+<f:layout name="Default"/>
+<f:section name="Content">
+    <f:if condition="{author}">
+        <f:then>
+            <h1 class="page-title">{author.name}</h1>
+            <f:if condition="{author.bio}">
+                <p>{author.bio}</p>
+            </f:if>
+            <f:render partial="List" arguments="{_all}"/>
+        </f:then>
+        <f:else>
+            <ul class="list-inline">
+                <f:for each="{authors}" as="item">
+                    <li>
+                        <f:link.action action="listPostsByAuthor" arguments="{author: item}">{item.name}</f:link.action>
+                    </li>
+                </f:for>
+            </ul>
+        </f:else>
+    </f:if>
+</f:section>

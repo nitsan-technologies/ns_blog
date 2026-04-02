@@ -1,0 +1,24 @@
+{
+  "name": "nitsan/ns-blog",
+  "type": "typo3-cms-extension",
+  "description": "Lean blog extension for T3Karma with list/latest/category/author features.",
+  "license": "MIT",
+  "require": {
+    "typo3/cms-core": "^13 || ^14",
+    "typo3/cms-extbase": "^13 || ^14",
+    "typo3/cms-fluid": "^13 || ^14",
+    "typo3/cms-frontend": "^13 || ^14",
+    "typo3/cms-backend": "^13 || ^14",
+    "php": "^8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "NITSAN\\NsBlog\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "ns_blog"
+    }
+  }
+}

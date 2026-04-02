@@ -1,0 +1,40 @@
+<f:if condition="{pagination}">
+    <f:if condition="{settings.lists.pagination.insertAbove}">
+        <f:render partial="Pagination/Pagination" arguments="{pagination: pagination}" />
+    </f:if>
+</f:if>
+
+<div class="blog-posts">
+    <f:if condition="{pagination}">
+        <f:then>
+            <f:for each="{pagination.paginatedItems}" as="post">
+                <article class="post post-medium">
+                    <div class="post-content">
+                        <h2 class="font-weight-semibold text-6 line-height-3 mb-2">
+                            <a href="{f:uri.page(pageUid: post.uid)}">{post.title}</a>
+                        </h2>
+                        <p>{post.description -> f:format.crop(maxCharacters: 220)}</p>
+                    </div>
+                </article>
+            </f:for>
+        </f:then>
+        <f:else>
+            <f:for each="{posts}" as="post">
+                <article class="post post-medium">
+                    <div class="post-content">
+                        <h2 class="font-weight-semibold text-6 line-height-3 mb-2">
+                            <a href="{f:uri.page(pageUid: post.uid)}">{post.title}</a>
+                        </h2>
+                        <p>{post.description -> f:format.crop(maxCharacters: 220)}</p>
+                    </div>
+                </article>
+            </f:for>
+        </f:else>
+    </f:if>
+</div>
+
+<f:if condition="{pagination}">
+    <f:if condition="{settings.lists.pagination.insertBelow}">
+        <f:render partial="Pagination/Pagination" arguments="{pagination: pagination}" />
+    </f:if>
+</f:if>

@@ -1,0 +1,143 @@
+categories:
+  nsblog:
+    label: 'NS Blog'
+  nsblog.uids:
+    label: 'Page and Storage'
+    parent: nsblog
+  nsblog.templates:
+    label: 'Template Paths'
+    parent: nsblog
+  nsblog.lists:
+    label: 'List and Pagination'
+    parent: nsblog
+  nsblog.latest:
+    label: 'Latest and Related'
+    parent: nsblog
+  nsblog.images:
+    label: 'Image Sizes'
+    parent: nsblog
+  nsblog.meta:
+    label: 'Meta Elements'
+    parent: nsblog
+
+settings:
+  plugin.tx_nsblog.view.templateRootPath:
+    label: 'Template Root Path'
+    category: nsblog.templates
+    type: string
+    default: 'EXT:ns_theme_t3karma/Resources/Private/Extensions/Blog/Templates/'
+  plugin.tx_nsblog.view.partialRootPath:
+    label: 'Partial Root Path'
+    category: nsblog.templates
+    type: string
+    default: 'EXT:ns_theme_t3karma/Resources/Private/Extensions/Blog/Partials/'
+  plugin.tx_nsblog.view.layoutRootPath:
+    label: 'Layout Root Path'
+    category: nsblog.templates
+    type: string
+    default: 'EXT:ns_theme_t3karma/Resources/Private/Extensions/Blog/Layouts/'
+
+  plugin.tx_nsblog.settings.storagePid:
+    label: 'Storage PID'
+    category: nsblog.uids
+    type: page
+    default: 0
+  plugin.tx_nsblog.settings.blogUid:
+    label: 'Blog Page UID'
+    category: nsblog.uids
+    type: page
+    default: 0
+  plugin.tx_nsblog.settings.categoryUid:
+    label: 'Category Page UID'
+    category: nsblog.uids
+    type: page
+    default: 0
+  plugin.tx_nsblog.settings.authorUid:
+    label: 'Author Page UID'
+    category: nsblog.uids
+    type: page
+    default: 0
+
+  plugin.tx_nsblog.settings.lists.posts.maximumDisplayedItems:
+    label: 'Maximum Displayed Items'
+    category: nsblog.lists
+    type: int
+    default: 10
+  plugin.tx_nsblog.settings.lists.posts.dateFormat:
+    label: 'Post Date Format'
+    category: nsblog.lists
+    type: string
+    default: '%d.%m.%Y'
+  plugin.tx_nsblog.settings.lists.pagination.itemsPerPage:
+    label: 'Items Per Page'
+    category: nsblog.lists
+    type: int
+    default: 10
+  plugin.tx_nsblog.settings.lists.pagination.insertAbove:
+    label: 'Show Pagination Above'
+    category: nsblog.lists
+    type: bool
+    default: false
+  plugin.tx_nsblog.settings.lists.pagination.insertBelow:
+    label: 'Show Pagination Below'
+    category: nsblog.lists
+    type: bool
+    default: true
+  plugin.tx_nsblog.settings.lists.pagination.maximumNumberOfLinks:
+    label: 'Maximum Number Of Pagination Links'
+    category: nsblog.lists
+    type: int
+    default: 10
+
+  plugin.tx_nsblog.settings.latestPosts.limit:
+    label: 'Latest Posts Limit'
+    category: nsblog.latest
+    type: int
+    default: 3
+  plugin.tx_nsblog.settings.relatedPosts.limit:
+    label: 'Related Posts Limit'
+    category: nsblog.latest
+    type: int
+    default: 3
+
+  plugin.tx_nsblog.settings.lists.featuredImage.width:
+    label: 'List Featured Image Width'
+    category: nsblog.images
+    type: string
+    default: '1140'
+  plugin.tx_nsblog.settings.lists.featuredImage.height:
+    label: 'List Featured Image Height'
+    category: nsblog.images
+    type: string
+    default: '400c'
+  plugin.tx_nsblog.settings.post.featuredImage.width:
+    label: 'Post Featured Image Width'
+    category: nsblog.images
+    type: string
+    default: '1140'
+  plugin.tx_nsblog.settings.post.featuredImage.height:
+    label: 'Post Featured Image Height'
+    category: nsblog.images
+    type: string
+    default: '400c'
+
+  plugin.tx_nsblog.settings.meta.postheader.enable:
+    label: 'Enable Post Header Meta'
+    category: nsblog.meta
+    type: bool
+    default: true
+  plugin.tx_nsblog.settings.meta.postfooter.enable:
+    label: 'Enable Post Footer Meta'
+    category: nsblog.meta
+    type: bool
+    default: true
+  plugin.tx_nsblog.settings.meta.listheader.enable:
+    label: 'Enable List Header Meta'
+    category: nsblog.meta
+    type: bool
+    default: true
+  plugin.tx_nsblog.settings.meta.listfooter.enable:
+    label: 'Enable List Footer Meta'
+    category: nsblog.meta
+    type: bool
+    default: true

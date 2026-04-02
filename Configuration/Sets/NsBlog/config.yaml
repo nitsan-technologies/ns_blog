@@ -1,0 +1,4 @@
+name: nitsan/ns-blog
+label: 'NS Blog'
+dependencies:
+  - typo3/fluid-styled-content
