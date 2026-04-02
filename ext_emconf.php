@@ -3,7 +3,7 @@
 $EM_CONF['ns_blog'] = [
     'title' => 'NS Blog',
     'description' => 'Minimal blog extension for T3Karma (latest, list, category, author).',
-    'category' => 'fe',
+    'category' => 'plugin',
     'author' => 'Team T3Planet',
     'author_email' => 'info@t3planet.de',
     'author_company' => 'T3Planet',
