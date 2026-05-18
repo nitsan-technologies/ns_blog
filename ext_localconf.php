@@ -16,7 +16,18 @@ ExtensionUtility::configurePlugin(
     [
         PostController::class => 'listRecentPosts',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+);
+
+ExtensionUtility::configurePlugin(
+    'NsBlog',
+    'DemandedPosts',
+    [
+        PostController::class => 'listByDemand',
+    ],
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 ExtensionUtility::configurePlugin(
@@ -25,7 +36,8 @@ ExtensionUtility::configurePlugin(
     [
         PostController::class => 'listLatestPosts',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 ExtensionUtility::configurePlugin(
@@ -34,7 +46,8 @@ ExtensionUtility::configurePlugin(
     [
         PostController::class => 'listPostsByCategory',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 ExtensionUtility::configurePlugin(
@@ -43,7 +56,8 @@ ExtensionUtility::configurePlugin(
     [
         PostController::class => 'listPostsByAuthor',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 ExtensionUtility::configurePlugin(
@@ -52,7 +66,8 @@ ExtensionUtility::configurePlugin(
     [
         PostController::class => 'sidebar',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 ExtensionUtility::configurePlugin(
@@ -61,7 +76,8 @@ ExtensionUtility::configurePlugin(
     [
         PostController::class => 'relatedPosts',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 ExtensionUtility::configurePlugin(
@@ -70,7 +86,8 @@ ExtensionUtility::configurePlugin(
     [
         WidgetController::class => 'recentPosts',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 ExtensionUtility::configurePlugin(
@@ -79,7 +96,11 @@ ExtensionUtility::configurePlugin(
     [
         WidgetController::class => 'categories',
     ],
-    []
+    [],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid'] ??= [];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces'] ??= [];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['nsblogvh'] ??= [];
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['nsblogvh'][] = 'NITSAN\\NsBlog\\ViewHelpers';

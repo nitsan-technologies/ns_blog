@@ -9,26 +9,14 @@ if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-ExtensionManagementUtility::addTcaSelectItem(
+ExtensionManagementUtility::addTCAcolumns(
     'pages',
-    'doktype',
-    [
-        'label' => 'Blog Post',
-        'value' => (string)Constants::DOKTYPE_BLOG_POST,
-        'icon' => 'ns-blog-page-post',
-        'group' => 'default',
-    ]
-);
-
-$GLOBALS['TCA']['pages']['ctrl']['typeicon_classes'][(string)Constants::DOKTYPE_BLOG_POST] = 'ns-blog-page-post';
-
-$GLOBALS['TCA']['pages']['columns'] = array_replace_recursive(
-    $GLOBALS['TCA']['pages']['columns'],
     [
         'publish_date' => [
             'label' => 'Publish date',
             'config' => [
                 'type' => 'datetime',
+                'format' => 'date',
                 'default' => 0,
             ],
         ],
@@ -53,6 +41,19 @@ $GLOBALS['TCA']['pages']['columns'] = array_replace_recursive(
         ],
     ]
 );
+
+ExtensionManagementUtility::addTcaSelectItem(
+    'pages',
+    'doktype',
+    ['Blog Post', Constants::DOKTYPE_BLOG_POST, 'ns-blog-page-post', 'default']
+);
+
+$GLOBALS['TCA']['pages']['ctrl']['typeicon_classes'][(string)Constants::DOKTYPE_BLOG_POST] = 'ns-blog-page-post';
+
+if (!isset($GLOBALS['TCA']['pages']['types'][(string)Constants::DOKTYPE_BLOG_POST])) {
+    $GLOBALS['TCA']['pages']['types'][(string)Constants::DOKTYPE_BLOG_POST]
+        = $GLOBALS['TCA']['pages']['types']['1'] ?? [];
+}
 
 ExtensionManagementUtility::addToAllTCAtypes(
     'pages',

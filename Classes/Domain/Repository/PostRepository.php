@@ -52,6 +52,34 @@ class PostRepository extends Repository
     }
 
     /**
+     * Demanded posts supports selected storage folders (pid)
+     * and direct selected blog post pages (uid).
+     *
+     * @param int[] $selectedPageIds
+     */
+    public function findAllByDemandSelection(array $selectedPageIds = []): QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $this->applyStorageOverrideWhenProvided($query, $selectedPageIds);
+
+        $constraints = [$query->equals('doktype', Constants::DOKTYPE_BLOG_POST)];
+        if ($selectedPageIds !== []) {
+            $constraints[] = $query->logicalOr(
+                $query->in('pid', $selectedPageIds),
+                $query->in('uid', $selectedPageIds)
+            );
+        }
+
+        $query->matching($query->logicalAnd(...$constraints));
+        $query->setOrderings([
+            'publishDate' => QueryInterface::ORDER_DESCENDING,
+            'uid' => QueryInterface::ORDER_DESCENDING,
+        ]);
+
+        return $query->execute();
+    }
+
+    /**
      * @param int[] $storagePageIds
      */
     public function findAllByCategory(Category $category, array $storagePageIds = []): QueryResultInterface

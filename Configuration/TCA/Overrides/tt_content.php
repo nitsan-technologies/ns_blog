@@ -21,7 +21,7 @@ ExtensionUtility::registerPlugin(
     pluginName: 'Posts',
     pluginTitle: 'NS Blog: Posts',
     pluginIcon: 'ns-blog-plugin-posts',
-    group: 'nsblog'
+    group: 'NS Blog'
 );
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
@@ -32,10 +32,24 @@ ExtensionManagementUtility::addToAllTCAtypes(
 
 ExtensionUtility::registerPlugin(
     extensionName: 'NsBlog',
+    pluginName: 'DemandedPosts',
+    pluginTitle: 'NS Blog: Demanded Posts',
+    pluginIcon: 'ns-blog-plugin-posts',
+    group: 'NS Blog'
+);
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:plugin,pages,recursive',
+    'nsblog_demandedposts',
+    'after:palette:headers'
+);
+
+ExtensionUtility::registerPlugin(
+    extensionName: 'NsBlog',
     pluginName: 'LatestPosts',
     pluginTitle: 'NS Blog: Latest Posts',
     pluginIcon: 'ns-blog-plugin-latestposts',
-    group: 'nsblog'
+    group: 'NS Blog'
 );
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
@@ -49,7 +63,7 @@ ExtensionUtility::registerPlugin(
     pluginName: 'Category',
     pluginTitle: 'NS Blog: Category',
     pluginIcon: 'ns-blog-plugin-category',
-    group: 'nsblog'
+    group: 'NS Blog'
 );
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
@@ -63,7 +77,7 @@ ExtensionUtility::registerPlugin(
     pluginName: 'AuthorPosts',
     pluginTitle: 'NS Blog: Author Posts',
     pluginIcon: 'ns-blog-plugin-authorposts',
-    group: 'nsblog'
+    group: 'NS Blog'
 );
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
@@ -77,7 +91,7 @@ ExtensionUtility::registerPlugin(
     pluginName: 'RelatedPosts',
     pluginTitle: 'NS Blog: Related Posts',
     pluginIcon: 'ns-blog-plugin-authorposts',
-    group: 'nsblog'
+    group: 'NS Blog'
 );
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
@@ -91,7 +105,7 @@ ExtensionUtility::registerPlugin(
     pluginName: 'Sidebar',
     pluginTitle: 'NS Blog: Sidebar',
     pluginIcon: 'ns-blog-plugin-category',
-    group: 'nsblog'
+    group: 'NS Blog'
 );
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',

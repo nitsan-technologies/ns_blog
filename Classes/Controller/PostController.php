@@ -44,13 +44,37 @@ class PostController extends ActionController
         return $this->htmlResponse();
     }
 
+    public function listByDemandAction(int $currentPage = 1): ResponseInterface
+    {
+        $this->assignContentElementData();
+        $storagePageIds = $this->resolveStoragePageIdsFromContentElement();
+        $posts = $this->postRepository->findAllByDemandSelection($storagePageIds);
+        $pagination = $this->getPagination($posts, $currentPage);
+        $this->assignCategoriesForFilterFromPosts($pagination->getPaginatedItems());
+        $this->view->assign('type', 'demand');
+        $this->view->assign('posts', $posts);
+        $this->view->assign('pagination', $pagination);
+        return $this->htmlResponse();
+    }
+
     public function listLatestPostsAction(): ResponseInterface
     {
         $this->assignContentElementData();
-        $limit = (int)($this->settings['latestPosts']['limit'] ?? 3);
-        $this->assignCategoriesForFilter($this->resolveStoragePageIdsFromContentElement());
+        $storagePageIds = $this->resolveStoragePageIdsFromContentElement();
+        $limit = max(1, (int)($this->settings['latestPosts']['limit'] ?? 3));
+        $latestCategory = (int)($this->settings['latestPosts']['category'] ?? 0);
+        $posts = $this->postRepository->findAllWithLimit($limit, $storagePageIds);
+        if ($latestCategory > 0) {
+            $categoryObject = $this->categoryRepository->findByUidWithoutStorage($latestCategory);
+            if ($categoryObject !== null) {
+                $categoryPosts = $this->postRepository->findAllByCategory($categoryObject, $storagePageIds);
+                $posts = array_slice(iterator_to_array($categoryPosts), 0, $limit);
+                $this->view->assign('latestSelectedCategory', $categoryObject);
+            }
+        }
+        $this->assignCategoriesForFilter($storagePageIds);
         $this->view->assign('type', 'latest');
-        $this->view->assign('posts', $this->postRepository->findAllWithLimit($limit, $this->resolveStoragePageIdsFromContentElement()));
+        $this->view->assign('posts', $posts);
         return $this->htmlResponse();
     }
 
@@ -122,8 +146,7 @@ class PostController extends ActionController
 
     protected function assignContentElementData(): void
     {
-        $contentObject = $this->request->getAttribute('currentContentObject');
-        $this->view->assign('data', $contentObject !== null ? $contentObject->data : null);
+        $this->view->assign('data', $this->getCurrentContentObjectData());
     }
 
     /**
@@ -191,8 +214,8 @@ class PostController extends ActionController
     protected function getPagination(QueryResultInterface $posts, int $currentPage): BlogPagination
     {
         $itemsPerPage = (int)($this->settings['lists']['pagination']['itemsPerPage'] ?? 10);
-        $contentObject = $this->request->getAttribute('currentContentObject');
-        $layout = is_object($contentObject) ? (int)(($contentObject->data['layout'] ?? 0)) : 0;
+        $data = $this->getCurrentContentObjectData();
+        $layout = (int)($data['layout'] ?? 0);
         if ($layout === 36) {
             $itemsPerPage = (int)($this->settings['loadMore']['itemsPerPage'] ?? 4);
         }
@@ -214,8 +237,7 @@ class PostController extends ActionController
             }
         }
 
-        $contentObject = $this->request->getAttribute('currentContentObject');
-        $data = is_object($contentObject) ? (array)($contentObject->data ?? []) : [];
+        $data = $this->getCurrentContentObjectData();
         $basePageIds = GeneralUtility::intExplode(',', (string)($data['pages'] ?? ''), true);
         $basePageIds = array_values(array_filter($basePageIds, static fn(int $pid): bool => $pid > 0));
         if ($basePageIds === []) {
@@ -258,5 +280,20 @@ class PostController extends ActionController
         }
 
         return array_map(static fn(string $uid): int => (int)$uid, array_keys($allPageIds));
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getCurrentContentObjectData(): array
+    {
+        $contentObject = $this->request->getAttribute('currentContentObject');
+        if (is_object($contentObject)) {
+            $contentObjectData = get_object_vars($contentObject);
+            if (is_array($contentObjectData['data'] ?? null)) {
+                return $contentObjectData['data'];
+            }
+        }
+        return [];
     }
 }

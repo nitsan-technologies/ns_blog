@@ -41,8 +41,7 @@ final class WidgetController extends ActionController
      */
     private function resolveStoragePageIdsFromContentElement(): array
     {
-        $contentObject = $this->request->getAttribute('currentContentObject');
-        $data = is_object($contentObject) ? (array)($contentObject->data ?? []) : [];
+        $data = $this->getCurrentContentObjectData();
         $basePageIds = GeneralUtility::intExplode(',', (string)($data['pages'] ?? ''), true);
         $basePageIds = array_values(array_filter($basePageIds, static fn(int $pid): bool => $pid > 0));
         if ($basePageIds === []) {
@@ -85,5 +84,20 @@ final class WidgetController extends ActionController
         }
 
         return array_map(static fn(string $uid): int => (int)$uid, array_keys($allPageIds));
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function getCurrentContentObjectData(): array
+    {
+        $contentObject = $this->request->getAttribute('currentContentObject');
+        if (is_object($contentObject)) {
+            $contentObjectData = get_object_vars($contentObject);
+            if (is_array($contentObjectData['data'] ?? null)) {
+                return $contentObjectData['data'];
+            }
+        }
+        return [];
     }
 }
