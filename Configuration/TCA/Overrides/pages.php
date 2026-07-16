@@ -45,7 +45,7 @@ ExtensionManagementUtility::addTCAcolumns(
 ExtensionManagementUtility::addTcaSelectItem(
     'pages',
     'doktype',
-    ['Blog Post', Constants::DOKTYPE_BLOG_POST, 'ns-blog-page-post', 'default']
+    ['Blog Post', (string)Constants::DOKTYPE_BLOG_POST, 'ns-blog-page-post', 'default']
 );
 
 $GLOBALS['TCA']['pages']['ctrl']['typeicon_classes'][(string)Constants::DOKTYPE_BLOG_POST] = 'ns-blog-page-post';
