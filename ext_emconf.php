@@ -12,6 +12,7 @@ $EM_CONF['ns_blog'] = [
     'constraints' => [
         'depends' => [
             'typo3' => '13.4.0-14.9.99',
+            'ns_license' => '14.5.4-14.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],
